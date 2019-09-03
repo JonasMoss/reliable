@@ -59,12 +59,12 @@ fit_1f_orth2 = lavaan::cfa(model = model_1f,
 
 # And store the data.
 
-saverds(fit_3f, "inst/testdata/data_fit_3f.rds")
-saverds(fit_3f_cov, "inst/testdata/data_fit_3f_cov.rds")
-saverds(fit_3f_orth, "inst/testdata/data_fit_3f_orth.rds")
-saverds(fit_1f, "inst/testdata/data_fit_1f.rds")
-saverds(fit_1f_cov, "inst/testdata/data_fit_1f_cov.rds")
-saverds(fit_1f_orth, "inst/testdata/data_fit_1f_orth.rds")
-saverds(fit_1f_orth2, "inst/testdata/data_fit_1f_orth2.rds")
+saveRDS(fit_3f, "inst/testdata/data_fit_3f.rds")
+saveRDS(fit_3f_cov, "inst/testdata/data_fit_3f_cov.rds")
+saveRDS(fit_3f_orth, "inst/testdata/data_fit_3f_orth.rds")
+saveRDS(fit_1f, "inst/testdata/data_fit_1f.rds")
+saveRDS(fit_1f_cov, "inst/testdata/data_fit_1f_cov.rds")
+saveRDS(fit_1f_orth, "inst/testdata/data_fit_1f_orth.rds")
+saveRDS(fit_1f_orth2, "inst/testdata/data_fit_1f_orth2.rds")
 
 })()
