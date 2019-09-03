@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# reliable <img src="man/figures/logo.png" align="right" width="159" height="137" />
+# reliable <img src="man/figures/logo.png" align="right" width="126" height="77" />
 
 [![Travis build
 status](https://travis-ci.org/JonasMoss/reliable.svg?branch=master)](https://travis-ci.org/JonasMoss/reliable)
@@ -97,3 +97,7 @@ If you encounter a bug, have a feature request or need some help, open a
 [Github issue](https://github.com/JonasMoss/reliable/issues). Create a
 pull requests to contribute. This project follows a [Contributor Code of
 Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct.md).
+
+The logo is adapted from [AutoDraw](https://www.autodraw.com/) and
+licensed under [CC
+BY 4.0](https://creativecommons.org/licenses/by/4.0/).

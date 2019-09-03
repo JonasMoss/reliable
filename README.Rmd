@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# reliable <img src="man/figures/logo.png" align="right" width="159" height="137" />
+# reliable <img src="man/figures/logo.png" align="right" width="126" height="77" />
 [![Travis build status](https://travis-ci.org/JonasMoss/reliable.svg?branch=master)](https://travis-ci.org/JonasMoss/reliable)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JonasMoss/reliable?branch=master&svg=true)](https://ci.appveyor.com/project/JonasMoss/reliable)
 [![Codecov test coverage](https://codecov.io/gh/JonasMoss/reliable/branch/master/graph/badge.svg)](https://codecov.io/gh/JonasMoss/reliable?branch=master)
@@ -66,3 +66,6 @@ reliability(object, type = "linear")
 ## How to Contribute or Get Help
 If you encounter a bug, have a feature request or need some help, open a [Github issue](https://github.com/JonasMoss/reliable/issues). Create a pull requests
 to contribute. This project follows a [Contributor Code of Conduct](https://www.contributor-covenant.org/version/1/4/code-of-conduct.md).
+
+The logo is adapted from [AutoDraw](https://www.autodraw.com/) and licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
