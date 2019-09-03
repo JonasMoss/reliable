@@ -2,22 +2,18 @@
 % Please edit documentation in R/reliabilities.R
 \name{omega}
 \alias{omega}
-\title{Calculate the generalized congeneric reliabiltiy.}
+\title{Calculate the congeneric reliabiltiy.}
 \usage{
-omega(object, a = 1, B = 0)
+omega(object)
 }
 \arguments{
 \item{object}{Either a lavaan object or a list containing the factor loadings
 and the residual errror covariance matrix.}
-
-\item{a}{A column vector.}
-
-\item{B}{A matrix.}
 }
 \value{
 The generalized congeneric reliability.
 }
 \description{
-Calculate the generalized congeneric reliabiltiy.
+Calculate the congeneric reliabiltiy.
 }
 \keyword{internal}

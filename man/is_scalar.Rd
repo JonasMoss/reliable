@@ -6,6 +6,12 @@
 \usage{
 is_scalar(x)
 }
+\arguments{
+\item{x}{An object.}
+}
+\value{
+\code{TRUE} if \code{x} is scalar, \code{FALSE} otherwise.
+}
 \description{
 Checks if argument is a scalar.
 }

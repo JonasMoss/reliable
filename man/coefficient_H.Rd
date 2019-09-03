@@ -2,22 +2,18 @@
 % Please edit documentation in R/reliabilities.R
 \name{coefficient_H}
 \alias{coefficient_H}
-\title{Calculate the generalized coefficient H.}
+\title{Calculate coefficient H.}
 \usage{
-coefficient_H(Lambda, Psi, Gamma, a = 1, B = 0)
+coefficient_H(object)
 }
 \arguments{
-\item{a}{A vector or scalar.}
-
-\item{B}{A matrix wih}
-
 \item{object}{Either a lavaan object or a list containing the factor loadings
 and the residual errror covariance matrix.}
 }
 \value{
-The generalized coefficient H.
+Coefficient H.
 }
 \description{
-Calculate the generalized coefficient H.
+Calculate coefficient H.
 }
 \keyword{internal}

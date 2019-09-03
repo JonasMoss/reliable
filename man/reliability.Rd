@@ -4,7 +4,7 @@
 \alias{reliability}
 \title{Calculate the decision theoretic reliabilities and optimal weights}
 \usage{
-reliability(object, type = "linear", A = NULL, B = 0, iota = NULL)
+reliability(object, type = "linear", A = 1, B = 0, iota = NULL)
 }
 \arguments{
 \item{object}{Either a lavaan object or a list containing the factor loadings
