@@ -15,5 +15,6 @@ Imports:
     assertthat
 Suggests: 
     testthat,
-    lavaan
+    lavaan,
+    covr
 RoxygenNote: 6.1.1
