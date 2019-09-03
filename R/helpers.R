@@ -64,13 +64,7 @@ lavaan_to_list = function(object) {
 
 to_list = function(object) {
   if(inherits(object, "lavaan")) lavaan_to_list(object) else {
-    assertthat::assert_that(!is.null(object$Gamma), msg = "'object$Gamma' does not exist.")
-    assertthat::assert_that(!is.null(object$Lambda), msg = "'object$Lambda' does not exist.")
-    assertthat::assert_that(!is.null(object$Psi), msg = "'object$Psi' does not exist.")
-    p = ncol(object$Lambda)
-    k = nrow(object$Lambda)
-    assertthat::are_equal(p, ncol(object$Gamma), msg = "Gamma and Lambda have incompatible dimensions.")
-    assertthat::are_equal(q, ncol(object$Psi), msg = "Psi and Lambda have incompatible dimensions.")
+    object$Lambda = as.matrix(object$Lambda)
     object
   }
 }

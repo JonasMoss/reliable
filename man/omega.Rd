@@ -2,18 +2,58 @@
 % Please edit documentation in R/reliabilities.R
 \name{omega}
 \alias{omega}
-\title{Calculate the congeneric reliabiltiy.}
+\title{Calculate the congeneric reliability.}
 \usage{
 omega(object)
 }
 \arguments{
-\item{object}{Either a lavaan object or a list containing the factor loadings
-and the residual errror covariance matrix.}
+\item{object}{Either a \code{lavaan} object or a list
+containing \code{Lambda}, the matrix of factor loadings, and \code{Psi},
+a diagonal matrix of residual variances.}
 }
 \value{
-The generalized congeneric reliability.
+A numeric containing the value of the congeneric reliability.
 }
 \description{
-Calculate the congeneric reliabiltiy.
+The congeneric reliability is a the sum score reliability for the
+   congeneric measurment model. The function takes either a
+   \code{lavaan} object or a list  containing the matrix of factor loadings
+   and the diagonal matrix of residual variances.
 }
-\keyword{internal}
+\details{
+The congeneric measurement model is the linear factor model with one latent
+   variable, potentially different loadings, and a diagonal residual variance
+   matrix. Coefficient H (see \code{\link{coefficient_H}}) is also a reliability under
+   the congeneric measurement model. The difference between coefficient H and
+   the congeneric reliability lies in the implied factor scores. While the
+   congeneric reliability uses sum scores where each item in the scale is
+   given the same weight, coefficient H uses best possible linear combination
+   of the items in terms of squared error loss.
+
+When all factor loadings are equal the congeneric reliability equals
+   coefficient alpha. If all residual variances are equal as well, the
+   congeneric reliability equals the standardized cofficient alpha.
+
+This function does not find the optimal selection of variables and does
+    not flip the sign of any items. Use \code{reliability} with
+    \code{type = "sumscore"} to do this.
+}
+\examples{
+   model = ' g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 '
+   fit = lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
+
+   # The congeneric reliability uses all items supplied.
+   omega(fit)
+
+   # But the reliability function finds the optimal choice of variables.
+   reliability(fit, type = "sumscore")
+}
+\references{
+Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture of tests." Psychometrika, 16, 297-334.
+}
+\seealso{
+\code{\link{coefficient_H}} for the linear reliability under the
+   congeneric model. \code{\link{reliability}} for reliabilities under the
+   linear factor model, which includes optimization of which elements to
+   include in the model when \code{type = "sumscore"}.
+}

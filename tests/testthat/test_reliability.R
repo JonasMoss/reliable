@@ -20,3 +20,10 @@ object = to_list(fit_1f_orth2)
 expect_equal(reliability(object, type = "sumscore",
                          iota = rep(1, 9))$reliability,
              omega(object))
+
+context("Omega and coefficient H")
+
+expect_error(omega(fit_1f_cov), "Psi must be diagonal")
+expect_error(omega(fit_3f_cov), "Lambda cannot have more the one column.")
+expect_error(coefficient_H(fit_1f_cov), "Psi must be diagonal")
+expect_error(coefficient_H(fit_3f_cov), "Lambda cannot have more the one column.")
