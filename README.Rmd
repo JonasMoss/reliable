@@ -15,10 +15,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-# attenuation <img src="man/figures/logo.png" align="right" width="159" height="137" />
+# reliable <img src="man/figures/logo.png" align="right" width="159" height="137" />
 [![Travis build status](https://travis-ci.org/JonasMoss/reliable.svg?branch=master)](https://travis-ci.org/JonasMoss/reliable)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JonasMoss/reliable?branch=master&svg=true)](https://ci.appveyor.com/project/JonasMoss/reliable)
-[![Codecov test coverage](https://codecov.io/gh/JonasMoss/reliable/branch/master/graph/badge.svg)](https://codecov.io/gh/JonasMoss/reliablen?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/JonasMoss/reliable/branch/master/graph/badge.svg)](https://codecov.io/gh/JonasMoss/reliable?branch=master)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 An `R` package for reliability coefficients and factor scores for the linear
