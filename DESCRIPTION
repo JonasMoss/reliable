@@ -1,0 +1,14 @@
+Package: reliable
+Type: Package
+Title: Reliability coefficients and factor scores for the linear factor model
+Version: 0.1.0
+Author: Jonas Moss
+Maintainer: Jonas Moss <jonas.gjertsen@gmail.com>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
+RoxygenNote: 6.1.1
