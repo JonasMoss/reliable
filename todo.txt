@@ -1,0 +1,3 @@
+Make vignette:
+
+* Describe how to calculcate variants of the omega hierarchical.
