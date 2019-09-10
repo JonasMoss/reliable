@@ -20,7 +20,7 @@ rsq_linear = function(Lambda, Psi, Gamma, A, B) {
   E = tcrossprod(D, D)
   reliability = tr(solve(tcrossprod(C, Lambda) + Psi, E))/denominator
   weights = solve(tcrossprod(C, Lambda) + Psi, D)
-  list(reliability = reliability,
+  list(rsq = reliability,
        weights = weights)
 }
 
@@ -40,7 +40,7 @@ rsq_sumscore = function(Lambda, Psi, Gamma, A, B, iota) {
   D = diag(crossprod(iota, Lambda %*% Gamma %*% t(A)))^2
   weights = diag(t(iota) %*% Lambda %*% Gamma %*% t(A)) %*%
     (1/diag(t(iota) %*% (Lambda %*% Gamma %*% t(Lambda) + Psi) %*% iota))
-  list(reliability = tr(C%*%D)/denominator,
+  list(rsq = tr(C%*%D)/denominator,
        weights = weights)
 
 }

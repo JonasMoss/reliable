@@ -11,14 +11,14 @@ expect_equal(reliability(object, type = "sumscore", iota = iota),
 ## Does the reliabiltiy equal coefficient H?
 
 object = to_list(fit_1f_orth)
-expect_equal(reliability(object)$reliability,
+expect_equal(reliability(object)$rsq,
              coefficient_H(object))
 
 ## Does the reliabiltiy equal omega??
 
 object = to_list(fit_1f_orth2)
 expect_equal(reliability(object, type = "sumscore",
-                         iota = rep(1, 9))$reliability,
+                         iota = rep(1, 9))$rsq,
              omega(object))
 
 context("Omega and coefficient H")
