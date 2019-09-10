@@ -33,7 +33,7 @@ reliability = function(object, type = "linear", A = 1, B = 0, iota = NULL) {
 
   }
 
-  rsq$inflation = 1/(1 - rsq$reliability)
+  rsq$inflation = 1/(1 - rsq$rsq)
   rsq
 
 }
