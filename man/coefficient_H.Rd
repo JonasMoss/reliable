@@ -2,7 +2,7 @@
 % Please edit documentation in R/reliabilities.R
 \name{coefficient_H}
 \alias{coefficient_H}
-\title{Calculate coefficient H.}
+\title{Coefficient H}
 \usage{
 coefficient_H(object)
 }
@@ -16,7 +16,7 @@ A numeric containing the value of coefficient H.
 }
 \description{
 Coefficient H is a optimal linearly weighted reliability coefficient
-   for the congeneric measurment model. The function takes either a
+   for the congeneric measurement model. The function takes either a
    \code{lavaan} object or a list  containing the matrix of factor loadings
    and the diagonal matrix of residual variances.
 }

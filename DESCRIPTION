@@ -7,7 +7,7 @@ Authors@R: c(
       comment = c(ORCID = "0000-0002-6876-6964")
     ))
 Description: Calculate reliability coefficients and factor scores for the linear
-    factor model.
+    factor model using lavaan objects.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -18,5 +18,7 @@ Imports:
 Suggests: 
     testthat,
     lavaan,
-    covr
+    covr,
+    spelling
 RoxygenNote: 6.1.1
+Language: en-US

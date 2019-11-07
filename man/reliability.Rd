@@ -2,30 +2,30 @@
 % Please edit documentation in R/reliabilities.R
 \name{reliability}
 \alias{reliability}
-\title{Calculate the decision theoretic reliabilities and optimal weights}
+\title{Decision Theoretic Reliabilities and Optimal Weights}
 \usage{
 reliability(object, type = "linear", A = 1, B = 0, iota = NULL)
 }
 \arguments{
 \item{object}{Either a lavaan object or a list containing the factor loadings
-and the residual errror covariance matrix.}
+and the residual error covariance matrix.}
 
-\item{type}{Choose "linear" for the optimal linear weights (recommended) or
-"sumscore" for the optimal sumscore weights.}
+\item{type}{Choose `"linear"`` for the optimal linear weights (recommended)
+or `"sumscore`" for the optimal sumscore weights.}
 
 \item{A}{The matrix A in S = AZ + Beps.}
 
 \item{B}{The matrix B in S = AZ + Beps. Defaults to \code{0}.}
 
-\item{iota}{If type is sumscore and iota is supplied, this iota is used
+\item{iota}{If type is `"sumscore"` and iota is supplied, this iota is used
 instead of the optimal iota.}
 }
 \value{
-A list containing the marix of optimal weights, the R^2 reliability,
+A list containing the matrix of optimal weights, the R^2 reliability,
     the inflation rate reliability and ioata (if applicable.)
 }
 \description{
-Calculate the reliabiltiy of a prediction in a linear factor model. The
+Calculate the reliability of a prediction in a linear factor model. The
    prediction is on the form S = AZ + Beps', where eps' is a new error and
-   Z are the latent variables.
+   Z are latent variables.
 }

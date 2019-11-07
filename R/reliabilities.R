@@ -1,19 +1,19 @@
-#' Calculate the decision theoretic reliabilities and optimal weights
+#' Decision Theoretic Reliabilities and Optimal Weights
 #'
-#' Calculate the reliabiltiy of a prediction in a linear factor model. The
+#' Calculate the reliability of a prediction in a linear factor model. The
 #'    prediction is on the form S = AZ + Beps', where eps' is a new error and
-#'    Z are the latent variables.
+#'    Z are latent variables.
 #'
 #' @export
 #' @param object Either a lavaan object or a list containing the factor loadings
-#'    and the residual errror covariance matrix.
-#' @param type Choose "linear" for the optimal linear weights (recommended) or
-#'    "sumscore" for the optimal sumscore weights.
+#'    and the residual error covariance matrix.
+#' @param type Choose `"linear"`` for the optimal linear weights (recommended)
+#'     or `"sumscore`" for the optimal sumscore weights.
 #' @param A The matrix A in S = AZ + Beps.
 #' @param B The matrix B in S = AZ + Beps. Defaults to \code{0}.
-#' @param iota If type is sumscore and iota is supplied, this iota is used
+#' @param iota If type is `"sumscore"` and iota is supplied, this iota is used
 #'     instead of the optimal iota.
-#' @return A list containing the marix of optimal weights, the R^2 reliability,
+#' @return A list containing the matrix of optimal weights, the R^2 reliability,
 #'     the inflation rate reliability and ioata (if applicable.)
 reliability <- function(object, type = "linear", A = 1, B = 0, iota = NULL) {
   type <- match.arg(type, c("sumscore", "linear"))
@@ -37,10 +37,10 @@ reliability <- function(object, type = "linear", A = 1, B = 0, iota = NULL) {
   rsq
 }
 
-#' Calculate coefficient H.
+#' Coefficient H
 #'
 #' Coefficient H is a optimal linearly weighted reliability coefficient
-#'    for the congeneric measurment model. The function takes either a
+#'    for the congeneric measurement model. The function takes either a
 #'    \code{lavaan} object or a list  containing the matrix of factor loadings
 #'    and the diagonal matrix of residual variances.
 #'
@@ -85,10 +85,10 @@ coefficient_H <- function(object) {
   c(unname(H))
 }
 
-#' Calculate the congeneric reliability.
+#' Congeneric Reliability
 #'
 #' The congeneric reliability is a the sum score reliability for the
-#'    congeneric measurment model. The function takes either a
+#'    congeneric measurement model. The function takes either a
 #'    \code{lavaan} object or a list  containing the matrix of factor loadings
 #'    and the diagonal matrix of residual variances.
 #'
@@ -103,7 +103,7 @@ coefficient_H <- function(object) {
 #'
 #' When all factor loadings are equal the congeneric reliability equals
 #'    coefficient alpha. If all residual variances are equal as well, the
-#'    congeneric reliability equals the standardized cofficient alpha.
+#'    congeneric reliability equals the standardized coefficient alpha.
 #'
 #' This function does not find the optimal selection of variables and does
 #'     not flip the sign of any items. Use \code{reliability} with
@@ -119,7 +119,7 @@ coefficient_H <- function(object) {
 #'    linear factor model, which includes optimization of which elements to
 #'    include in the model when \code{type = "sumscore"}.
 #' @references
-#'   Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture
+#'   Cronbach, L.J. (1951) "Coefficient alpha and the internal structure
 #'   of tests." Psychometrika, 16, 297-334.
 #' @examples
 #' model <- " g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 "

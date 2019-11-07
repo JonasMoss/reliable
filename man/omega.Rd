@@ -2,7 +2,7 @@
 % Please edit documentation in R/reliabilities.R
 \name{omega}
 \alias{omega}
-\title{Calculate the congeneric reliability.}
+\title{Congeneric Reliability}
 \usage{
 omega(object)
 }
@@ -16,7 +16,7 @@ A numeric containing the value of the congeneric reliability.
 }
 \description{
 The congeneric reliability is a the sum score reliability for the
-   congeneric measurment model. The function takes either a
+   congeneric measurement model. The function takes either a
    \code{lavaan} object or a list  containing the matrix of factor loadings
    and the diagonal matrix of residual variances.
 }
@@ -32,7 +32,7 @@ The congeneric measurement model is the linear factor model with one latent
 
 When all factor loadings are equal the congeneric reliability equals
    coefficient alpha. If all residual variances are equal as well, the
-   congeneric reliability equals the standardized cofficient alpha.
+   congeneric reliability equals the standardized coefficient alpha.
 
 This function does not find the optimal selection of variables and does
     not flip the sign of any items. Use \code{reliability} with
@@ -49,7 +49,7 @@ omega(fit)
 reliability(fit, type = "sumscore")
 }
 \references{
-Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture
+Cronbach, L.J. (1951) "Coefficient alpha and the internal structure
   of tests." Psychometrika, 16, 297-334.
 }
 \seealso{
