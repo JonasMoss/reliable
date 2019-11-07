@@ -9,9 +9,10 @@ status](https://travis-ci.org/JonasMoss/reliable.svg?branch=master)](https://tra
 status](https://ci.appveyor.com/api/projects/status/github/JonasMoss/reliable?branch=master&svg=true)](https://ci.appveyor.com/project/JonasMoss/reliable)
 [![Codecov test
 coverage](https://codecov.io/gh/JonasMoss/reliable/branch/master/graph/badge.svg)](https://codecov.io/gh/JonasMoss/reliable?branch=master)
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/reliable)](https://cran.r-project.org/package=reliable)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 An `R` package for reliability coefficients and factor scores for the
 linear factor model.
@@ -45,7 +46,7 @@ scores.
 
 ``` r
 reliability(object, type = "sumscore")
-#> $reliability
+#> $rsq
 #> [1] 0.7569798
 #> 
 #> $weights
@@ -72,7 +73,7 @@ And we can find the linear reliability and the associated factor scores.
 
 ``` r
 reliability(object, type = "linear")
-#> $reliability
+#> $rsq
 #> [1] 0.7962199
 #> 
 #> $weights
