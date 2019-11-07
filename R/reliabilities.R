@@ -15,27 +15,26 @@
 #'     instead of the optimal iota.
 #' @return A list containing the marix of optimal weights, the R^2 reliability,
 #'     the inflation rate reliability and ioata (if applicable.)
+reliability <- function(object, type = "linear", A = 1, B = 0, iota = NULL) {
+  type <- match.arg(type, c("sumscore", "linear"))
+  object <- to_list(object)
 
+  if (is_scalar(A)) A <- as.numeric(A) * diag(nrow(object$Gamma))
+  if (is_scalar(B)) B <- as.numeric(B) * diag(nrow(object$Psi))
 
-reliability = function(object, type = "linear", A = 1, B = 0, iota = NULL) {
+  if (type == "linear") {
+    rsq <- rsq_linear(object$Lambda, object$Psi, object$Gamma, A, B)
+  } else if (type == "sumscore") {
+    if (is.null(iota)) {
+      iota <- greedy_iota(object$Lambda, object$Psi, object$Gamma, A)
+    }
 
-  type = match.arg(type, c("sumscore", "linear"))
-  object = to_list(object)
-  if(is_scalar(A)) A = as.numeric(A)*diag(nrow(object$Gamma))
-  if(is_scalar(B)) B = as.numeric(B)*diag(nrow(object$Psi))
-  if(type == "linear") {
-      rsq = rsq_linear(object$Lambda, object$Psi, object$Gamma, A, B)
-  } else if(type == "sumscore") {
-
-    if(is.null(iota)) iota = greedy_iota(object$Lambda, object$Psi, object$Gamma, A)
-    rsq = rsq_sumscore(object$Lambda, object$Psi, object$Gamma, A, B, iota)
-    rsq$iota = iota
-
+    rsq <- rsq_sumscore(object$Lambda, object$Psi, object$Gamma, A, B, iota)
+    rsq$iota <- iota
   }
 
-  rsq$inflation = 1/(1 - rsq$rsq)
+  rsq$inflation <- 1 / (1 - rsq$rsq)
   rsq
-
 }
 
 #' Calculate coefficient H.
@@ -47,12 +46,12 @@ reliability = function(object, type = "linear", A = 1, B = 0, iota = NULL) {
 #'
 #' The congeneric measurement model is the linear factor model with one latent
 #'    variable, potentially different loadings, and a diagonal residual variance
-#'    matrix. The congeneric reliability (see \code{\link{omega}}) is also a reliability under
-#'    the congeneric measurement model. The difference between coefficient H and
-#'    the congeneric reliability lies in the implied factor scores. While the
-#'    congeneric reliability uses sum scores where each item in the scale is
-#'    given the same weight, coefficient H uses best possible linear combination
-#'    of the items in terms of squared error loss.
+#'    matrix. The congeneric reliability (see \code{\link{omega}}) is also a
+#'    reliability under the congeneric measurement model. The difference between
+#'    coefficient H and the congeneric reliability lies in the implied factor
+#'    scores. While the congeneric reliability uses sum scores where each item
+#'    in the scale is given the same weight, coefficient H uses best possible
+#'    linear combination of the items in terms of squared error loss.
 #'
 #' @export
 #' @param object Either a \code{lavaan} object or a list
@@ -63,23 +62,27 @@ reliability = function(object, type = "linear", A = 1, B = 0, iota = NULL) {
 #'    congeneric model when each score is \code{1}. \code{\link{reliability}}
 #'    for reliabilities under the linear factor model.
 #' @references
-#'   Hancock, G. R. (2001). Rethinking construct reliability within latent variable systems. Structural equation modeling: Present and future, 195-216.
+#'   Hancock, G. R. (2001). Rethinking construct reliability within latent
+#'   variable systems. Structural equation modeling: Present and future,
+#'   195-216.
 #' @examples
-#'    model = ' g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 '
-#'    fit = lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
-#'    coefficient_H(fit)
+#' model <- " g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 "
+#' fit <- lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
+#' coefficient_H(fit)
+coefficient_H <- function(object) {
+  object <- to_list(object)
 
-coefficient_H = function(object) {
+  assertthat::assert_that(ncol(object$Lambda) == 1,
+    msg = "Lambda cannot have more the one column."
+  )
 
-  object = to_list(object)
+  assertthat::assert_that(is_diagonal(object$Psi),
+    msg = "Psi must be diagonal."
+  )
 
-  assertthat::assert_that(ncol(object$Lambda) == 1, msg = "Lambda cannot have more the one column.")
-  assertthat::assert_that(is_diagonal(object$Psi), msg = "Psi must be diagonal.")
-
-  numerator = crossprod(object$Lambda * 1 / diag(object$Psi), object$Lambda)
-  H = numerator/(1 + numerator)
+  numerator <- crossprod(object$Lambda * 1 / diag(object$Psi), object$Lambda)
+  H <- numerator / (1 + numerator)
   c(unname(H))
-
 }
 
 #' Calculate the congeneric reliability.
@@ -91,12 +94,12 @@ coefficient_H = function(object) {
 #'
 #' The congeneric measurement model is the linear factor model with one latent
 #'    variable, potentially different loadings, and a diagonal residual variance
-#'    matrix. Coefficient H (see \code{\link{coefficient_H}}) is also a reliability under
-#'    the congeneric measurement model. The difference between coefficient H and
-#'    the congeneric reliability lies in the implied factor scores. While the
-#'    congeneric reliability uses sum scores where each item in the scale is
-#'    given the same weight, coefficient H uses best possible linear combination
-#'    of the items in terms of squared error loss.
+#'    matrix. Coefficient H (see \code{\link{coefficient_H}}) is also a
+#'    reliability under the congeneric measurement model. The difference between
+#'    coefficient H and the congeneric reliability lies in the implied factor
+#'    scores. While the congeneric reliability uses sum scores where each item
+#'    in the scale is given the same weight, coefficient H uses best possible
+#'    linear combination of the items in terms of squared error loss.
 #'
 #' When all factor loadings are equal the congeneric reliability equals
 #'    coefficient alpha. If all residual variances are equal as well, the
@@ -116,28 +119,30 @@ coefficient_H = function(object) {
 #'    linear factor model, which includes optimization of which elements to
 #'    include in the model when \code{type = "sumscore"}.
 #' @references
-#'   Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture of tests." Psychometrika, 16, 297-334.
+#'   Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture
+#'   of tests." Psychometrika, 16, 297-334.
 #' @examples
-#'    model = ' g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 '
-#'    fit = lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
+#' model <- " g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 "
+#' fit <- lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
 #'
-#'    # The congeneric reliability uses all items supplied.
-#'    omega(fit)
+#' # The congeneric reliability uses all items supplied.
+#' omega(fit)
 #'
-#'    # But the reliability function finds the optimal choice of variables.
-#'    reliability(fit, type = "sumscore")
+#' # But the reliability function finds the optimal choice of variables.
+#' reliability(fit, type = "sumscore")
+omega <- function(object) {
+  object <- to_list(object)
 
-omega = function(object) {
+  assertthat::assert_that(ncol(object$Lambda) == 1,
+    msg = "Lambda cannot have more the one column."
+  )
 
-  object = to_list(object)
+  assertthat::assert_that(is_diagonal(object$Psi),
+    msg = "Psi must be diagonal."
+  )
 
-  assertthat::assert_that(ncol(object$Lambda) == 1, msg = "Lambda cannot have more the one column.")
-  assertthat::assert_that(is_diagonal(object$Psi), msg = "Psi must be diagonal.")
-
-  numerator = sum(object$Lambda)^2
-  i = rep(1, nrow(object$Psi))
-  omega = numerator/(sum(object$Psi) + numerator)
+  numerator <- sum(object$Lambda)^2
+  omega <- numerator / (sum(object$Psi) + numerator)
 
   c(unname(omega))
-
 }

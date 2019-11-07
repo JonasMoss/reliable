@@ -23,12 +23,12 @@ The congeneric reliability is a the sum score reliability for the
 \details{
 The congeneric measurement model is the linear factor model with one latent
    variable, potentially different loadings, and a diagonal residual variance
-   matrix. Coefficient H (see \code{\link{coefficient_H}}) is also a reliability under
-   the congeneric measurement model. The difference between coefficient H and
-   the congeneric reliability lies in the implied factor scores. While the
-   congeneric reliability uses sum scores where each item in the scale is
-   given the same weight, coefficient H uses best possible linear combination
-   of the items in terms of squared error loss.
+   matrix. Coefficient H (see \code{\link{coefficient_H}}) is also a
+   reliability under the congeneric measurement model. The difference between
+   coefficient H and the congeneric reliability lies in the implied factor
+   scores. While the congeneric reliability uses sum scores where each item
+   in the scale is given the same weight, coefficient H uses best possible
+   linear combination of the items in terms of squared error loss.
 
 When all factor loadings are equal the congeneric reliability equals
    coefficient alpha. If all residual variances are equal as well, the
@@ -39,17 +39,18 @@ This function does not find the optimal selection of variables and does
     \code{type = "sumscore"} to do this.
 }
 \examples{
-   model = ' g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 '
-   fit = lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
+model <- " g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 "
+fit <- lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
 
-   # The congeneric reliability uses all items supplied.
-   omega(fit)
+# The congeneric reliability uses all items supplied.
+omega(fit)
 
-   # But the reliability function finds the optimal choice of variables.
-   reliability(fit, type = "sumscore")
+# But the reliability function finds the optimal choice of variables.
+reliability(fit, type = "sumscore")
 }
 \references{
-Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture of tests." Psychometrika, 16, 297-334.
+Cronbach, L.J. (1951) "Coefficient alpha and the internal strucuture
+  of tests." Psychometrika, 16, 297-334.
 }
 \seealso{
 \code{\link{coefficient_H}} for the linear reliability under the

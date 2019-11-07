@@ -1,11 +1,13 @@
 Package: reliable
 Type: Package
-Title: Reliability coefficients and factor scores for the linear factor model
-Version: 0.1.0
-Author: Jonas Moss
-Maintainer: Jonas Moss <jonas.gjertsen@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Title: Reliability Coefficients and Factor Scores for the Linear Factor Model
+Version: 1.0.0
+Authors@R: c(
+    person("Jonas", "Moss", , "jonas.gjertsen@gmail.com", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0002-6876-6964")
+    ))
+Description: Calculate reliability coefficients and factor scores for the linear
+    factor model.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

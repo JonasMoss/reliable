@@ -23,20 +23,22 @@ Coefficient H is a optimal linearly weighted reliability coefficient
 \details{
 The congeneric measurement model is the linear factor model with one latent
    variable, potentially different loadings, and a diagonal residual variance
-   matrix. The congeneric reliability (see \code{\link{omega}}) is also a reliability under
-   the congeneric measurement model. The difference between coefficient H and
-   the congeneric reliability lies in the implied factor scores. While the
-   congeneric reliability uses sum scores where each item in the scale is
-   given the same weight, coefficient H uses best possible linear combination
-   of the items in terms of squared error loss.
+   matrix. The congeneric reliability (see \code{\link{omega}}) is also a
+   reliability under the congeneric measurement model. The difference between
+   coefficient H and the congeneric reliability lies in the implied factor
+   scores. While the congeneric reliability uses sum scores where each item
+   in the scale is given the same weight, coefficient H uses best possible
+   linear combination of the items in terms of squared error loss.
 }
 \examples{
-   model = ' g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 '
-   fit = lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
-   coefficient_H(fit)
+model <- " g =~ x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8 + x9 "
+fit <- lavaan::cfa(model = model, data = lavaan::HolzingerSwineford1939)
+coefficient_H(fit)
 }
 \references{
-Hancock, G. R. (2001). Rethinking construct reliability within latent variable systems. Structural equation modeling: Present and future, 195-216.
+Hancock, G. R. (2001). Rethinking construct reliability within latent
+  variable systems. Structural equation modeling: Present and future,
+  195-216.
 }
 \seealso{
 \code{\link{omega}} for the sum score reliability under the
